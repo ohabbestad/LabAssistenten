@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab-assistenten</title>
+    
+    <!--Skript som lar meg bruke ferdig CSS frå Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--Sikrar rask
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+    </style>
+-->
+
+</head>
+<body class="p-8">
+
+    <div id="main-container" class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+
+        <!-- Startside -->
+        <div id="heim-view" class="active-view">
+            <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Velkommen til Lab-assistenten</h1>
+            <p class="text-center text-lg mb-8 text-gray-600">Velg et forsøk du vil starte:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="syre-base-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Syre-base-titrering</h2>
+                    <p class="mt-2 text-gray-600">Lær om nøytralisering og pH-verdi ved å utføre en titrering.</p>
+                </div>
+                <!-- Fleire forsøk kan legges til her -->
+                <div id="dansande-rosiner-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Dansande rosiner</h2>
+                    <p class="mt-2 text-gray-600">Utforsk fenomenet med rosiner som dansar i kullsyre-vatn.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forsøksoversikt -->
+        <div id="oversikt-view" class="hidden">
+            <h1 id="eksperiment-tittel" class="text-3xl font-bold mb-4 text-gray-800"></h1>
+            
+            <!-- Bildeplassering -->
+            <img id="eksperiment-bilde" class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="" alt="Eksperimentbilde">
+
+            <p id="eksperiment-skildring" class="text-lg text-gray-600 mb-6"></p>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Utstyr</h2>
+            <ul id="utstyrsliste" class="list-disc list-inside space-y-1 text-gray-700"></ul>
+
+            <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Mål</h2>
+            <ul id="maal-liste" class="list-disc list-inside space-y-1 text-gray-700"></ul>
+
+            <button id="start-eksperiment-btn" class="mt-8 bg-blue-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">Start forsøket</button>
+            <button id="heim-btn" class="mt-8 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Tilbake</button>
+        </div>
+
+        <!-- Stegvis forklaring -->
+        <div id="steg-view" class="hidden">
+            <div id="step-content" class="mb-6">
+                <h2 id="step-title" class="text-2xl font-semibold mb-2 text-gray-800"></h2>
+                <p id="step-text" class="text-lg text-gray-700 mb-4"></p>
+                <div id="step-media" class="mb-4"></div>
+                <div id="step-question-container" class="mt-6 p-4 border border-gray-300 rounded-md bg-gray-50">
+                    <p id="step-question" class="font-medium text-gray-800 mb-2"></p>
+                    <textarea id="steg-svar" class="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Forrige</button>
+                <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">Neste</button>
+            </div>
+        </div>
+
+        <!-- Rapportvisning -->
+        <div id="rapport-view" class="hidden">
+            <h1 class="text-3xl font-bold mb-4 text-gray-800">Lab-rapport</h1>
+            <p class="text-gray-600 mb-6">Her er dine svar. Du kan kopiere teksten og bruke den som utgangspunkt for rapporten din.</p>
+            <div id="rapport-text-container" class="bg-gray-100 p-6 rounded-lg shadow-inner">
+                <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
+            </div>
+            <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">Kopier rapport</button>
+            <button id="start-ny-btn" class="mt-6 ml-4 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Start nytt forsøk</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Array med forsøksdata
+        const experiments = {
+            "syre-base-titrering": {
+                title: "Syre-base-titrering",
+                photo: "bilder/titrering.jpg",
+                description: "Dette forsøket viser hvordan syrer og baser nøytraliserer hverandre. Du skal bruke en titrering for å finne pH-verdien til en ukjent syre.",
+                equipment: ["Begerglass", "Byrette", "Pipette", "pH-indikator", "Ukjent syre", "Sterk base"],
+                goals: ["Lære om nøytralisering", "Forstå pH-skalaen", "Utføre en titrering korrekt"],
+                steps: [
+                    {
+                        title: "Steg 1: Klargjøring av utstyr",
+                        text: "Før du starter, må du klargjøre alt utstyret. Vask begerglass, byrette og pipette grundig med destillert vann. Fyll byretten med den sterke basen.",
+                        question: "Hvorfor er det viktig å vaske alt utstyret med destillert vann før forsøket starter?",
+                        answer: ""
+                    },
+                    {
+                        title: "Steg 2: Forberedelse av syren",
+                        text: "Mål opp nøyaktig 25 ml av den ukjente syren ved hjelp av pipetten, og overfør den til begerglasset. Tilsett et par dråper pH-indikator.",
+                        question: "Hvilken fargeendring forventer du å se i løpet av forsøket, og hva indikerer den?",
+                        answer: ""
+                    },
+                    {
+                        title: "Steg 3: Titrering",
+                        text: "Drypp forsiktig den sterke basen fra byretten ned i begerglasset med syre. Rør kontinuerlig. Stopp når fargen på indikatoren endrer seg og holder seg der.",
+                        question: "Hva skjer kjemisk i begerglasset når syren blir nøytralisert av basen?",
+                        answer: ""
+                    },
+                    {
+                        title: "Steg 4: Resultat og konklusjon",
+                        text: "Les av volumet av base som ble brukt fra byretten. Bruk dette til å beregne konsentrasjonen av den ukjente syren. Dette punktet er nøytraliseringspunktet.",
+                        question: "Hva er nøytraliseringspunktet, og hva kan du si om konsentrasjonen til syren basert på ditt resultat?",
+                        answer: ""
+                    }
+                ]
+            },
+            
+            "dansande-rosiner": {
+                title: "Dansende rosiner",
+                photo: "bilder/rosinteater.jpg",
+                description: "Dette forsøket viser hvordan gassbobler påvirker oppdrift. Rosiner beveger seg opp og ned i brus på grunn av bobler som fester seg til overflaten.",
+                equipment: ["Begerglas", "Vatn med kullsyre", "Rosiner"],
+                goals: [
+                    "Observere korleis gassbobler påverkar oppdrift",
+                    "Forstå sammanhengen mellom tettleik og volum",
+                    "Diskutere Arkimedes' prinsipp i praksis"
+                ],
+                steps: [
+                    {
+                        title: "Steg 1: Klargjering av utstyr",
+                        text: "Fyll begerglaset med brus. Sørg for at det er nok kullsyre i drikken.",
+                        question: "Det kan vera fristande å ta seg ein slurk frå begerglaset. Kvifor skal du ikkje gjere det?",
+                        answer: ""
+                    },
+                    {
+                        title: "Steg 2: Tilsett rosiner",
+                        text: "Legg 4–6 rosiner forsiktig ned i glasset med brus.",
+                        question: "Skildre kva som skjer med rosinene rett etter at de er lagt i glasset. Kvifor trur du dette skjer?",
+                        answer: ""
+                    },
+                    {
+                        title: "Steg 3: Observer rørsla",
+                        text: "Sjå korleis rosinene synk fyrst, og deretter byrjar å stige opp og ned i glaset.",
+                        question: "Kva gjer at rosinene stig opp til overflata, og kvifor synk dei igjen?",
+                        answer: ""
+                    },
+                    {
+                        title: "Steg 4: Diskuter fenomenet",
+                        text: "Snakk om korleis boblene endrar rosinens tettleik og oppdrift. Knytt dette til Arkimedes' prinsipp: Ein gjenstand som er heilt eller delvis nedsenka i ei væske eller gass får ein oppdrift lik vekta av den væskemengda som gjenstanden fortrenger.",
+                        question: "Korleis kan vi forklare dette forsøket ved hjelp av oppdrift og tettleik?",
+                        answer: ""
+                    }
+                ]
+            }
+        };
+
+        // DOM-elementer
+        const homeView = document.getElementById('heim-view');
+        const oversiktView = document.getElementById('oversikt-view');
+        const stegView = document.getElementById('steg-view');
+        const rapportView = document.getElementById('rapport-view');
+
+        const mainContainer = document.getElementById('main-container');
+
+        const startEksperimentBtn = document.getElementById('start-eksperiment-btn');
+        const heimBtn = document.getElementById('heim-btn');
+        const forrigeStegBtn = document.getElementById('forrige-steg-btn');
+        const nesteStegBtn = document.getElementById('neste-steg-btn');
+        const stegSvarInput = document.getElementById('steg-svar');
+        const kopierRapportBtn = document.getElementById('kopier-rapport-btn');
+        const startNyBtn = document.getElementById('start-ny-btn');
+        const rapportText = document.getElementById('rapport-text');
+
+        let aktueltEksperiment = null;
+        let aktueltStegIndex = 0;
+
+        // Funksjoner for å bytte visning
+        function showView(viewToShow) {
+            const views = [homeView, oversiktView, stegView, rapportView];
+            views.forEach(view => view.classList.add('hidden'));
+            viewToShow.classList.remove('hidden');
+        }
+
+        function loadExperimentOverview(experimentKey) {
+            aktueltEksperiment = experiments[experimentKey];
+            if (!aktueltEksperiment) return;
+
+            document.getElementById('eksperiment-tittel').textContent = aktueltEksperiment.title;
+            document.getElementById('eksperiment-bilde').src = aktueltEksperiment.photo;
+            document.getElementById('eksperiment-skildring').textContent = aktueltEksperiment.description;
+
+            const equipmentList = document.getElementById('utstyrsliste');
+            equipmentList.innerHTML = '';
+            aktueltEksperiment.equipment.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                equipmentList.appendChild(li);
+            });
+
+            const goalList = document.getElementById('maal-liste');
+            goalList.innerHTML = '';
+            aktueltEksperiment.goals.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                goalList.appendChild(li);
+            });
+
+            showView(oversiktView);
+        }
+
+        function loadStep(index) {
+            const step = aktueltEksperiment.steps[index];
+            if (!step) return;
+
+            document.getElementById('step-title').textContent = step.title;
+            document.getElementById('step-text').textContent = step.text;
+            document.getElementById('step-question').textContent = step.question;
+
+            // Fyll inn lagret svar hvis det finnes
+            stegSvarInput.value = step.answer || '';
+            stegSvarInput.focus();
+
+            // Skjul/vis knapper basert på steg
+            forrigeStegBtn.classList.toggle('hidden', index === 0);
+            nesteStegBtn.textContent = index === aktueltEksperiment.steps.length - 1 ? 'Generer rapport' : 'Neste';
+
+            showView(stegView);
+        }
+
+        function generateReport() {
+            let reportContent = `Lab-rapport: ${aktueltEksperiment.title}\n\n`;
+            reportContent += `Mål:\n`;
+            aktueltEksperiment.goals.forEach(goal => {
+                reportContent += `- ${goal}\n`;
+            });
+            reportContent += `\nUtstyr:\n`;
+            aktueltEksperiment.equipment.forEach(item => {
+                reportContent += `- ${item}\n`;
+            });
+            reportContent += `\nGjennomføring og resultater:\n`;
+
+            aktueltEksperiment.steps.forEach(step => {
+                reportContent += `\n${step.title}\n`;
+                reportContent += `Spørsmål: ${step.question}\n`;
+                reportContent += `Svar: ${step.answer}\n`;
+            });
+
+            rapportText.textContent = reportContent;
+            showView(rapportView);
+        }
+
+        // Event listeners
+        document.getElementById('syre-base-kort').addEventListener('click', () => {
+            loadExperimentOverview("syre-base-titrering");
+        });
+
+        document.getElementById('dansande-rosiner-kort').addEventListener('click', () => {
+            loadExperimentOverview("dansande-rosiner");
+        });
+
+        startEksperimentBtn.addEventListener('click', () => {
+            aktueltStegIndex = 0;
+            // Tøm tidligere svar ved ny start
+            aktueltEksperiment.steps.forEach(step => step.answer = "");
+            loadStep(aktueltStegIndex);
+        });
+
+        heimBtn.addEventListener('click', () => {
+            showView(homeView);
+        });
+
+        forrigeStegBtn.addEventListener('click', () => {
+            // Lagre nåværende svar før du går tilbake
+            aktueltEksperiment.steps[aktueltStegIndex].answer = stegSvarInput.value;
+            aktueltStegIndex--;
+            loadStep(aktueltStegIndex);
+        });
+
+        nesteStegBtn.addEventListener('click', () => {
+            // Lagre nåværende svar
+            aktueltEksperiment.steps[aktueltStegIndex].answer = stegSvarInput.value;
+
+            if (aktueltStegIndex < aktueltEksperiment.steps.length - 1) {
+                aktueltStegIndex++;
+                loadStep(aktueltStegIndex);
+            } else {
+                generateReport();
+            }
+        });
+
+        kopierRapportBtn.addEventListener('click', () => {
+            const range = document.createRange();
+            range.selectNodeContents(rapportText);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                alert('Rapporten er kopiert til utklippstavlen!');
+            } catch (err) {
+                console.error('Kunne ikke kopiere tekst: ', err);
+            }
+            selection.removeAllRanges();
+        });
+
+        startNyBtn.addEventListener('click', () => {
+            showView(homeView);
+        });
+    </script>
+</body>
+</html>
