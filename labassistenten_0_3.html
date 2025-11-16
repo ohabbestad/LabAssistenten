@@ -49,7 +49,7 @@
             
             <button id="les-opp-oversikt-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
                     Les opp tekst
-                </button>
+            </button>
 
             <img id="eksperiment-bilde" class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="" alt="Eksperimentbilde">
 
@@ -98,7 +98,13 @@
 
         <div id="rapport-view" class="hidden">
             <h1 class="text-3xl font-bold mb-4 text-gray-800">Lab-rapport</h1>
+
             <p class="text-gray-600 mb-6">Her er svara dine. Du kan kopiere teksten og bruke den som utgangspunkt for rapporten din.</p>
+            
+            <button id="les-opp-rapport-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
+                    Les opp rapport
+            </button>
+            
             <div id="rapport-text-container" class="bg-gray-100 p-6 rounded-lg shadow-inner">
                 <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
             </div>
@@ -315,6 +321,7 @@
         const stegTilHeimBtn = document.getElementById('steg-til-heim-btn');
         const lesOppBtn = document.getElementById('les-opp-btn');
         const lesOppOversiktBtn = document.getElementById('les-opp-oversikt-btn');
+        const lesRapportBtn = document.getElementById('les-opp-rapport-btn');
 
 
         let aktueltEksperiment = null;
@@ -564,6 +571,15 @@
             window.speechSynthesis.speak(utterance);
         });
         
+        lesRapportBtn.addEventListener('click', () => {
+            const reportContent = rapportText.textContent;
+            
+            window.speechSynthesis.cancel(); 
+            
+            const utterance = new SpeechSynthesisUtterance(reportContent);
+            utterance.lang = 'nb-NO';
+            window.speechSynthesis.speak(utterance);
+        });
     </script>
 </body>
 </html>
