@@ -18,7 +18,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 <div id="syre-base-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
                     <h2 class="text-xl font-semibold text-gray-800">Syre-base-titrering</h2>
-                    <p class="mt-2 text-gray-600">Lær om nøytralisering og pH-verdi ved å utføre en titrering.</p>
+                    <p class="mt-2 text-gray-600">Lær om nøytralisering og pH-verdi ved å utføre ei titrering.</p>
                 </div>
                 <div id="dansande-rosiner-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
                     <h2 class="text-xl font-semibold text-gray-800">Dansande rosiner</h2>
@@ -30,7 +30,7 @@
                     <p class="mt-2 text-gray-600">Forstå korleis kromatografi kan brukast til å skille ulike fargestoff.</p>
                 </div>
                 <div id="magnet-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
-                    <h2 class="text-xl font-semibold text-gray-800">Lag en Elektromagnet</h2>
+                    <h2 class="text-xl font-semibold text-gray-800">Lag ein Elektromagnet</h2>
                     <p class="mt-2 text-gray-600">Lær om samanhengen mellom elektrisitet og magnetisme.</p>
                 </div>
                 <div id="osmose-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
@@ -83,7 +83,7 @@
             
             <div class="text-center mt-6">
                 <button id="steg-til-heim-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
-                    Avbryt og gå til heimsida
+                    Avbryt og gå til startsida
                 </button>
             </div>
 
@@ -91,7 +91,7 @@
 
         <div id="rapport-view" class="hidden">
             <h1 class="text-3xl font-bold mb-4 text-gray-800">Lab-rapport</h1>
-            <p class="text-gray-600 mb-6">Her er dine svar. Du kan kopiere teksten og bruke den som utgangspunkt for rapporten din.</p>
+            <p class="text-gray-600 mb-6">Her er svara dine. Du kan kopiere teksten og bruke den som utgangspunkt for rapporten din.</p>
             <div id="rapport-text-container" class="bg-gray-100 p-6 rounded-lg shadow-inner">
                 <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
             </div>
@@ -111,10 +111,28 @@
                 utstyr: ["Begerglass", "Byrette", "Pipette", "pH-indikator", "Ukjent syre", "Sterk base"],
                 maal: ["Lære om nøytralisering", "Forstå pH-skalaen", "Utføre en titrering korrekt"],
                 steg: [
-                    { tittel: "Steg 1: Klargjering av utstyr", tekst: "Før du startar...", bilde: "bilder/titrering.jpg", question: "Kvifor er det viktig...", answer: "" },
-                    { tittel: "Steg 2: Førebuing av syra", tekst: "Mål opp nøyaktig...", bilde: "bilder/titrering.jpg", question: "Kva fargeendring...", answer: "" },
-                    { tittel: "Steg 3: Titrering", tekst: "Drypp forsiktig...", bilde: "bilder/titrering.jpg", question: "Kva skjer kjemisk...", answer: "" },
-                    { tittel: "Steg 4: Resultat og konklusjon", tekst: "Les av volumet...", bilde: "bilder/titrering.jpg", question: "Kva er nøytraliseringspunktet...", answer: "" }
+                    {   tittel: "Steg 1: Klargjering av utstyr", 
+                        tekst:  "Før du startar, må du gjere klart alt utstyret. Vask begerglas, byrette og pipette grundig med destillert vatn. Fyll byretten med den sterke basen.", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kvifor er det viktig...", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 2: Førebuing av syra", 
+                        tekst: "Mål opp nøyaktig...", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kva fargeendring...", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 3: Titrering", 
+                        tekst: "Drypp forsiktig...", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kva skjer kjemisk...", answer: "" },
+                    {   tittel: "Steg 4: Resultat og konklusjon", 
+                        tekst: "Les av volumet...", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kva er nøytraliseringspunktet...", 
+                        answer: "" 
+                    }
                 ]
             },
             
@@ -125,30 +143,70 @@
                 utstyr: ["Begerglass", "Brus med kullsyre", "Rosiner"],
                 maal: ["Observere korleis gassbobler påverkar oppdrift", "Forstå samanhengen mellom tettleik og volum", "Drøfte Arkimedes' prinsipp i praksis"],
                 steg: [
-                    { tittel: "Steg 1: Klargjering av utstyr", tekst: "Fyll begerglasset...", bilde: "bilder/rosinteater.jpg", question: "Kvifor skal du ikkje...", answer: "" },
-                    { tittel: "Steg 2: Tilset rosiner", tekst: "Legg 4–6 rosiner...", bilde: "bilder/rosinteater.jpg", question: "Skildre kva som skjer...", answer: "" },
-                    { tittel: "Steg 3: Observer rørsla", tekst: "Sjå korleis rosinene...", bilde: "bilder/rosinteater.jpg", question: "Kva får rosinene...", answer: "" },
-                    { tittel: "Steg 4: Drøft fenomenet", tekst: "Snakk om korleis...", bilde: "bilder/rosinteater.jpg", question: "Korleis kan vi forklare...", answer: "" }
+                    {   tittel: "Steg 1: Klargjering av utstyr", 
+                        tekst: "Fyll begerglasset...", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Kvifor skal du ikkje...", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 2: Tilset rosiner", 
+                        tekst: "Legg 4–6 rosiner...", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Skildre kva som skjer...", 
+                        answer: "" },
+                    {   tittel: "Steg 3: Observer rørsla", 
+                        tekst: "Sjå korleis rosinene...", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Kva får rosinene...", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 4: Drøft fenomenet", 
+                        tekst: "Snakk om korleis...", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Korleis kan vi forklare...", 
+                        answer: "" 
+                    }
                 ]
             },
 
             // === NYE FORSØK START ===
             "papirkromatografi": {
                 tittel: "Fargeseparasjon (Kromatografi)",
-                foto: "bilder/rosinteater.jpg", // NY: PLASSHALDARBILETE
+                foto: "bilder/kromatografi.png", // NY: PLASSHALDARBILETE
                 skildring: "Forstå korleis kromatografi kan brukast til å skille ulike fargestoff i t.d. ein tusj.",
                 utstyr: ["Glass", "Vatn", "Filterpapir (f.eks. kaffefilter)", "Svart tusj (vassløyseleg)", "Saks"],
                 maal: ["Lære om kromatografi", "Sjå at fargar er blanda saman av fleire fargar"],
                 steg: [
-                    { tittel: "Steg 1: Klipp papir", tekst: "Klipp ei strimmel av filterpapiret.", bilde: "bilder/rosinteater.jpg", question: "Kvifor trur du vi bruker filterpapir?", answer: "" },
-                    { tittel: "Steg 2: Teikn strek", tekst: "Teikn ei tjukk strek nedst på strimmelen med tusjen, ca. 2 cm frå kanten.", bilde: "bilder/rosinteater.jpg", question: "Kva trur du skjer om streken er under vatn?", answer: "" },
-                    { tittel: "Steg 3: Plasser i vatn", tekst: "Plasser strimmelen i eit glass med litt vatn i botnen. Vatnet skal akkurat røre papiret, men ikkje tusjstreken.", bilde: "bilder/rosinteater.jpg", question: "Kva observerer du?", answer: "" },
-                    { tittel: "Steg 4: Konklusjon", tekst: "Sjå korleis fargane har skilt seg og klatra oppover papiret.", bilde: "bilder/rosinteater.jpg", question: "Kva fargar bestod den svarte tusjen av?", answer: "" }
+                    {   
+                        tittel: "Steg 1: Klipp papir", 
+                        tekst: "Klipp ei strimmel av filterpapiret.", 
+                        bilde: "bilder/kromatografi.png", 
+                        question: "Kvifor trur du vi bruker filterpapir?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 2: Teikn strek", 
+                        tekst: "Teikn ei tjukk strek nedst på strimmelen med tusjen, ca. 2 cm frå kanten.", 
+                        bilde: "bilder/kromatografi.png", 
+                        question: "Kva trur du skjer om streken er under vatn?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 3: Plasser i vatn", 
+                        tekst: "Plasser strimmelen i eit glass med litt vatn i botnen. Vatnet skal akkurat røre papiret, men ikkje tusjstreken.", 
+                        bilde: "bilder/kromatografi.png", 
+                        question: "Kva observerer du?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 4: Konklusjon", 
+                        tekst: "Sjå korleis fargane har skilt seg og klatra oppover papiret.", 
+                        bilde: "bilder/kromatografi.png", 
+                        question: "Kva fargar bestod den svarte tusjen av?", 
+                        answer: "" 
+                    }
                 ]
             },
             "elektromagnet": {
                 tittel: "Lag en Elektromagnet",
-                foto: "bilder/titrering.jpg", // NY: PLASSHALDARBILETE
+                foto: "bilder/elektromagnet_utstyr.png", // NY: PLASSHALDARBILETE
                 skildring: "Lær om samanhengen mellom elektrisitet og magnetisme ved å bygge ein enkel elektromagnet.",
                 utstyr: ["Batteri (f.eks. 9V)", "Ein stor jernspikar", "Isolert kopartråd", "Små binders"],
                 maal: ["Forstå prinsippet bak elektromagnetisme", "Bygge ein fungerande elektromagnet"],
