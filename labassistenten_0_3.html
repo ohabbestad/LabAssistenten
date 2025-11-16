@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab-assistenten</title>
+
+    <script src="https://kit.fontawesome.com/207e147084.js" crossorigin="anonymous"></script>
     
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -48,7 +50,7 @@
             <h1 id="eksperiment-tittel" class="text-3xl font-bold mb-4 text-gray-800"></h1>
             
             <button id="les-opp-oversikt-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
-                    Les opp tekst
+                <i class="fa-brands fa-readme"></i> Les opp tekst
             </button>
 
             <img id="eksperiment-bilde" class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="" alt="Eksperimentbilde">
@@ -60,8 +62,12 @@
             <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Mål</h2>
             <ul id="maal-liste" class="list-disc list-inside space-y-1 text-gray-700"></ul>
 
-            <button id="heim-btn" class="mt-8 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Tilbake</button>
-            <button id="start-eksperiment-btn" class="mt-8 ml-4 bg-blue-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">Start forsøket</button>
+            <button id="heim-btn" class="mt-8 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left"></i> Tilbake
+            </button>
+            <button id="start-eksperiment-btn" class="mt-8 ml-4 bg-blue-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                <i class="fa-regular fa-circle-play"></i> Start forsøket
+            </button>
         </div>
 
         <div id="steg-view" class="hidden">
@@ -69,7 +75,7 @@
                 <h2 id="step-tittel" class="text-2xl font-semibold mb-2 text-gray-800"></h2>
                 
                 <button id="les-opp-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
-                    Les opp tekst
+                    <i class="fa-brands fa-readme"></i> Les opp tekst
                 </button>
 
                 <p id="step-text" class="text-lg text-gray-700 mb-4"></p>
@@ -84,13 +90,17 @@
                 </div>
             </div>
 
-            <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Forrige</button>
-            <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">Neste</button>
+            <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left"></i> Forrige
+            </button>
+            <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-right"></i> Neste
+            </button>
 
             
             <div class="text-center mt-6">
                 <button id="steg-til-heim-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
-                    Avbryt og gå til startsida
+                    <i class="fa-regular fa-house"></i> Avbryt og gå til startsida
                 </button>
             </div>
 
@@ -102,14 +112,18 @@
             <p class="text-gray-600 mb-6">Her er svara dine. Du kan kopiere teksten og bruke den som utgangspunkt for rapporten din.</p>
             
             <button id="les-opp-rapport-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
-                    Les opp rapport
+                <i class="fa-brands fa-readme"></i> Les opp rapport
             </button>
             
             <div id="rapport-text-container" class="bg-gray-100 p-6 rounded-lg shadow-inner">
                 <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
             </div>
-            <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">Kopier rapport</button>
-            <button id="start-ny-btn" class="mt-6 ml-4 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Start nytt forsøk</button>
+            <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">
+                <i class="fa-regular fa-copy"></i> Kopier rapport
+            </button>
+            <button id="start-ny-btn" class="mt-6 ml-4 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                <i class="fa-solid fa-rotate-left"></i> Start nytt forsøk
+            </button>
         </div>
 
     </div>
@@ -422,7 +436,11 @@
             stegSvarInput.focus();
             
             forrigeStegBtn.classList.toggle('hidden', index === 0);
-            nesteStegBtn.textContent = index === aktueltEksperiment.steg.length - 1 ? 'Generer rapport' : 'Neste';
+            if (index === aktueltEksperiment.steg.length - 1) {
+                nesteStegBtn.innerHTML = '<i class="fa-solid fa-marker"></i> Generer rapport';
+            } else {
+                nesteStegBtn.innerHTML = 'Neste <i class="fa-solid fa-arrow-right"></i>';
+            }
 
             showView(stegView);
         }
