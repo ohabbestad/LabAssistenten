@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <tittel>Lab-assistenten</tittel>
+    <title>Lab-assistenten</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -47,6 +47,10 @@
         <div id="oversikt-view" class="hidden">
             <h1 id="eksperiment-tittel" class="text-3xl font-bold mb-4 text-gray-800"></h1>
             
+            <button id="les-opp-oversikt-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
+                    Les opp tekst
+                </button>
+
             <img id="eksperiment-bilde" class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="" alt="Eksperimentbilde">
 
             <p id="eksperiment-skildring" class="text-lg text-gray-600 mb-6"></p>
@@ -63,11 +67,14 @@
         <div id="steg-view" class="hidden">
             <div id="step-content" class="mb-6">
                 <h2 id="step-tittel" class="text-2xl font-semibold mb-2 text-gray-800"></h2>
-                <p id="step-text" class="text-lg text-gray-700 mb-4"></p>
                 
                 <button id="les-opp-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
                     Les opp tekst
                 </button>
+
+                <p id="step-text" class="text-lg text-gray-700 mb-4"></p>
+                
+                
                 
                 <div id="step-media" class="mb-4"></div>
                 
@@ -76,10 +83,10 @@
                     <textarea id="steg-svar" class="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                 </div>
             </div>
-            <div class="flex justify-between">
-                <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Forrige</button>
-                <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">Neste</button>
-            </div>
+
+            <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">Forrige</button>
+            <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">Neste</button>
+
             
             <div class="text-center mt-6">
                 <button id="steg-til-heim-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
@@ -211,9 +218,24 @@
                 utstyr: ["Batteri (f.eks. 9V)", "Ein stor jernspikar", "Isolert kopartråd", "Små binders"],
                 maal: ["Forstå prinsippet bak elektromagnetisme", "Bygge ein fungerande elektromagnet"],
                 steg: [
-                    { tittel: "Steg 1: Surr tråden", tekst: "Surr kopartråden tett rundt spikaren, men la endane vere frie.", bilde: "bilder/titrering.jpg", question: "Speler det ei rolle kva veg du surrar?", answer: "" },
-                    { tittel: "Steg 2: Koble til batteri", tekst: "Koble endane av tråden til polane på batteriet. OBS: Det kan bli varmt!", bilde: "bilder/titrering.jpg", question: "Kva skjer om du koblar frå batteriet?", answer: "" },
-                    { tittel: "Steg 3: Test magneten", tekst: "Prøv å plukke opp binders med spikaren.", bilde: "bilder/titrering.jpg", question: "Kor mange binders klarte du å løfte? Kva skjer om du surrar fleire rundar?", answer: "" }
+                    {   tittel: "Steg 1: Surr tråden", 
+                        tekst: "Surr kopartråden tett rundt spikaren, men la endane vere frie.", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Speler det ei rolle kva veg du surrar?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 2: Koble til batteri", 
+                        tekst: "Koble endane av tråden til polane på batteriet. OBS: Det kan bli varmt!", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kva skjer om du koblar frå batteriet?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 3: Test magneten", 
+                        tekst: "Prøv å plukke opp binders med spikaren.", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kor mange binders klarte du å løfte? Kva skjer om du surrar fleire rundar?", 
+                        answer: "" 
+                    }
                 ]
             },
             "osmose": {
@@ -223,9 +245,24 @@
                 utstyr: ["Ein potet", "Kniv", "Tre skåler", "Vatn", "Salt", "Sukker"],
                 maal: ["Forstå kva osmose er", "Observere korleis celler reagerer på ulikt vasspotensial"],
                 steg: [
-                    { tittel: "Steg 1: Kutt potet", tekst: "Kutt tre like store potetbitar.", bilde: "bilder/rosinteater.jpg", question: "Kvifor er det viktig at bitane er like store?", answer: "" },
-                    { tittel: "Steg 2: Fyll skåler", tekst: "Fyll éi skål med reint vatn, éi med sterkt saltvatn, og éi med sterkt sukkervatn.", bilde: "bilder/rosinteater.jpg", question: "Kva er hypotesen din for kvar bit?", answer: "" },
-                    { tittel: "Steg 3: Vent og observer", tekst: "Legg éin potetbit i kvar skål og la dei ligge i ein time. Kva har skjedd med konsistensen?", bilde: "bilder/rosinteater.jpg", question: "Skildre skilnaden på biten i reint vatn og biten i saltvatn.", answer: "" }
+                    {   tittel: "Steg 1: Kutt potet", 
+                        tekst: "Kutt tre like store potetbitar.", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Kvifor er det viktig at bitane er like store?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 2: Fyll skåler", 
+                        tekst: "Fyll éi skål med reint vatn, éi med sterkt saltvatn, og éi med sterkt sukkervatn.", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Kva er hypotesen din for kvar bit?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 3: Vent og observer", 
+                        tekst: "Legg éin potetbit i kvar skål og la dei ligge i ein time. Kva har skjedd med konsistensen?", 
+                        bilde: "bilder/rosinteater.jpg", 
+                        question: "Skildre skilnaden på biten i reint vatn og biten i saltvatn.", 
+                        answer: "" 
+                    }
                 ]
             },
             "vulkan": {
@@ -235,9 +272,24 @@
                 utstyr: ["Lita flaske eller glass", "Bakepulver", "Eddik", "Konditorfarge (valfritt)", "Zalo (valfritt)"],
                 maal: ["Lære om syre-base-reaksjonar", "Sjå korleis gass blir produsert i ein kjemisk reaksjon"],
                 steg: [
-                    { tittel: "Steg 1: Fyll i flaska", tekst: "Ha bakepulver i flaska. Tilset nokre dropar konditorfarge og Zalo for effekt.", bilde: "bilder/titrering.jpg", question: "Kva trur du Zalo gjer for reaksjonen?", answer: "" },
-                    { tittel: "Steg 2: Start reaksjonen", tekst: "Hell eddik i flaska og observer reaksjonen.", bilde: "bilder/titrering.jpg", question: "Kva ser, høyrer og luktar du?", answer: "" },
-                    { tittel: "Steg 3: Refleksjon", tekst: "Bakepulver er ein base og eddik er ei syre. Reaksjonen lagar karbondioksidgass (CO2).", bilde: "bilder/titrering.jpg", question: "Kvar har du sett denne typen reaksjon før?", answer: "" }
+                    {   tittel: "Steg 1: Fyll i flaska", 
+                        tekst: "Ha bakepulver i flaska. Tilset nokre dropar konditorfarge og Zalo for effekt.", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kva trur du Zalo gjer for reaksjonen?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 2: Start reaksjonen", 
+                        tekst: "Hell eddik i flaska og observer reaksjonen.", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kva ser, høyrer og luktar du?", 
+                        answer: "" 
+                    },
+                    {   tittel: "Steg 3: Refleksjon", 
+                        tekst: "Bakepulver er ein base og eddik er ei syre. Reaksjonen lagar karbondioksidgass (CO2).", 
+                        bilde: "bilder/titrering.jpg", 
+                        question: "Kvar har du sett denne typen reaksjon før?", 
+                        answer: "" 
+                    }
                 ]
             }
             // === NYE FORSØK SLUTT ===
@@ -262,6 +314,7 @@
 
         const stegTilHeimBtn = document.getElementById('steg-til-heim-btn');
         const lesOppBtn = document.getElementById('les-opp-btn');
+        const lesOppOversiktBtn = document.getElementById('les-opp-oversikt-btn');
 
 
         let aktueltEksperiment = null;
@@ -425,6 +478,7 @@
         forrigeStegBtn.addEventListener('click', () => {
             aktueltEksperiment.steg[aktueltStegIndex].answer = stegSvarInput.value;
             saveAnswersToLocalStorage();
+
             aktueltStegIndex--;
             loadStep(aktueltStegIndex);
         });
@@ -487,6 +541,21 @@
             const question = document.getElementById('step-question').textContent;
             
             const textToRead = `${tittel}. ${text}. Spørsmål: ${question}`;
+
+            window.speechSynthesis.cancel(); 
+            
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'nb-NO';
+            window.speechSynthesis.speak(utterance);
+        });
+
+        lesOppOversiktBtn.addEventListener('click', () => {
+            const tittel = aktueltEksperiment.tittel;
+            const text = aktueltEksperiment.skildring;
+            const utstyr = aktueltEksperiment.utstyr.join(', ');
+            const maal = aktueltEksperiment.maal.join(', ');
+            
+            const textToRead = `${tittel}. ${text}. Utstyr: ${utstyr}. Mål: ${maal}.`;
 
             window.speechSynthesis.cancel(); 
             
