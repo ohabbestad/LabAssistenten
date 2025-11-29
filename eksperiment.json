@@ -1,0 +1,258 @@
+{
+  "syre-base-titrering": {
+    "tittel": "Syre-base-titrering",
+    "foto": "bilder/titrering.jpg",
+    "skildring": "Dette forsøket viser hvordan syrer og baser nøytraliserer hverandre. Du skal bruke en titrering for å finne pH-verdien til en ukjent syre.",
+    "utstyr": [
+      "Begerglass",
+      "Byrette",
+      "Pipette",
+      "pH-indikator",
+      "Ukjent syre",
+      "Sterk base"
+    ],
+    "maal": [
+      "Lære om nøytralisering",
+      "Forstå pH-skalaen",
+      "Utføre en titrering korrekt"
+    ],
+    "steg": [
+      {
+        "tittel": "Steg 1: Klargjering av utstyr",
+        "tekst": "Før du startar, må du gjere klart alt utstyret. Vask begerglas, byrette og pipette grundig med destillert vatn. Fyll byretten med den sterke basen.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kvifor er det viktig å vaske alt utstyret med destillert vatn før forsøket startar?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 2: Førebuing av syra",
+        "tekst": "Mål opp nøyaktig 25 ml av den ukjende syra med pipetten, og overfør ho til begerglasset. Tilset eit par dråpar pH-indikator.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kva fargeendring forventar du å sjå i løpet av forsøket, og kva indikerer ho?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 3: Titrering",
+        "tekst": "Drypp forsiktig den sterke basen frå byretten ned i begerglasset med syra. Rør kontinuerleg. Stopp når fargen på indikatoren endrar seg og held seg der.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kva skjer kjemisk i begerglaset når syra blir nøytralisert av basen?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 4: Resultat og konklusjon",
+        "tekst": "Les av volumet av base som vart brukt frå byretten. Bruk dette til å rekne ut konsentrasjonen av den ukjende syra. Dette punktet er nøytraliseringspunktet.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kva er nøytraliseringspunktet, og kva kan du seie om konsentrasjonen til syra basert på ditt resultat?",
+        "answer": ""
+      }
+    ]
+  },
+  "dansande-rosiner": {
+    "tittel": "Dansende rosiner",
+    "foto": "bilder/rosinteater.jpg",
+    "skildring": "Dette forsøket viser korleis gassbobler påverkar oppdrift. Rosiner bevegjer seg opp og ned i brus fordi bobler festar seg til overflata.",
+    "utstyr": [
+      "Begerglass",
+      "Brus med kullsyre",
+      "Rosiner"
+    ],
+    "maal": [
+      "Observere korleis gassbobler påverkar oppdrift",
+      "Forstå samanhengen mellom tettleik og volum",
+      "Drøfte Arkimedes' prinsipp i praksis"
+    ],
+    "steg": [
+      {
+        "tittel": "Steg 1: Klargjering av utstyr",
+        "tekst": "Fyll begerglasset med brus. Sjå til at det er nok kullsyre i drikken.",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Det kan vera freistande å ta ein slurk frå begerglasset. Kvifor skal du ikkje gjere det?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 2: Tilset rosiner",
+        "tekst": "Legg 4–6 rosiner forsiktig ned i glaset med brus.",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Skildre kva som skjer med rosinene rett etter at dei blir lagde i glaset. Kvifor trur du dette skjer?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 3: Observer rørsla",
+        "tekst": "Sjå korleis rosinene synk fyrst, for så å byrja å stiga opp og ned i glaset.",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Kva får rosinene til å stiga opp til overflata, og kvifor synk dei igjen?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 4: Drøft fenomenet",
+        "tekst": "Snakk om korleis boblene endrar rosinens tettleik og oppdrift. Knytt dette til Arkimedes' prinsipp: Ein gjenstand som er heilt eller delvis nedsenka i ei væske får ein oppdrift lik vekta av den væskemengda som gjenstanden fortrenger.",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Korleis kan vi forklare dette forsøket med omgrepa oppdrift og tettleik?",
+        "answer": ""
+      }
+    ]
+  },
+  "papirkromatografi": {
+    "tittel": "Fargeseparasjon (Kromatografi)",
+    "foto": "bilder/kromatografi.png",
+    "skildring": "Forstå korleis kromatografi kan brukast til å skille ulike fargestoff i t.d. ein tusj.",
+    "utstyr": [
+      "Glass",
+      "Vatn",
+      "Filterpapir (f.eks. kaffefilter)",
+      "Svart tusj (vassløyseleg)",
+      "Saks"
+    ],
+    "maal": [
+      "Lære om kromatografi",
+      "Sjå at fargar er blanda saman av fleire fargar"
+    ],
+    "steg": [
+      {
+        "tittel": "Steg 1: Klipp papir",
+        "tekst": "Klipp ei strimmel av filterpapiret.",
+        "bilde": "bilder/kromatografi.png",
+        "question": "Kvifor trur du vi bruker filterpapir?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 2: Teikn strek",
+        "tekst": "Teikn ei tjukk strek nedst på strimmelen med tusjen, ca. 2 cm frå kanten.",
+        "bilde": "bilder/kromatografi.png",
+        "question": "Kva trur du skjer om streken er under vatn?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 3: Plasser i vatn",
+        "tekst": "Plasser strimmelen i eit glass med litt vatn i botnen. Vatnet skal akkurat røre papiret, men ikkje tusjstreken.",
+        "bilde": "bilder/kromatografi.png",
+        "question": "Kva observerer du?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 4: Konklusjon",
+        "tekst": "Sjå korleis fargane har skilt seg og klatra oppover papiret.",
+        "bilde": "bilder/kromatografi.png",
+        "question": "Kva fargar bestod den svarte tusjen av?",
+        "answer": ""
+      }
+    ]
+  },
+  "elektromagnet": {
+    "tittel": "Lag en Elektromagnet",
+    "foto": "bilder/elektromagnet_utstyr.png",
+    "skildring": "Lær om samanhengen mellom elektrisitet og magnetisme ved å bygge ein enkel elektromagnet.",
+    "utstyr": [
+      "Batteri (f.eks. 9V)",
+      "Ein stor jernspikar",
+      "Isolert kopartråd",
+      "Små binders"
+    ],
+    "maal": [
+      "Forstå prinsippet bak elektromagnetisme",
+      "Bygge ein fungerande elektromagnet"
+    ],
+    "steg": [
+      {
+        "tittel": "Steg 1: Surr tråden",
+        "tekst": "Surr kopartråden tett rundt spikaren, men la endane vere frie.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Speler det ei rolle kva veg du surrar?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 2: Koble til batteri",
+        "tekst": "Koble endane av tråden til polane på batteriet. OBS: Det kan bli varmt!",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kva skjer om du koblar frå batteriet?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 3: Test magneten",
+        "tekst": "Prøv å plukke opp binders med spikaren.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kor mange binders klarte du å løfte? Kva skjer om du surrar fleire rundar?",
+        "answer": ""
+      }
+    ]
+  },
+  "osmose": {
+    "tittel": "Osmose med potet",
+    "foto": "bilder/rosinteater.jpg",
+    "skildring": "Observer effekten av osmose (vanntransport) i planteceller.",
+    "utstyr": [
+      "Ein potet",
+      "Kniv",
+      "Tre skåler",
+      "Vatn",
+      "Salt",
+      "Sukker"
+    ],
+    "maal": [
+      "Forstå kva osmose er",
+      "Observere korleis celler reagerer på ulikt vasspotensial"
+    ],
+    "steg": [
+      {
+        "tittel": "Steg 1: Kutt potet",
+        "tekst": "Kutt tre like store potetbitar.",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Kvifor er det viktig at bitane er like store?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 2: Fyll skåler",
+        "tekst": "Fyll éi skål med reint vatn, éi med sterkt saltvatn, og éi med sterkt sukkervatn.",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Kva er hypotesen din for kvar bit?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 3: Vent og observer",
+        "tekst": "Legg éin potetbit i kvar skål og la dei ligge i ein time. Kva har skjedd med konsistensen?",
+        "bilde": "bilder/rosinteater.jpg",
+        "question": "Skildre skilnaden på biten i reint vatn og biten i saltvatn.",
+        "answer": ""
+      }
+    ]
+  },
+  "vulkan": {
+    "tittel": "Kjemisk Vulkan",
+    "foto": "bilder/titrering.jpg",
+    "skildring": "Demonstrer ein syre-base-reaksjon som produserer gass (CO2).",
+    "utstyr": [
+      "Lita flaske eller glass",
+      "Bakepulver",
+      "Eddik",
+      "Konditorfarge (valfritt)",
+      "Zalo (valfritt)"
+    ],
+    "maal": [
+      "Lære om syre-base-reaksjonar",
+      "Sjå korleis gass blir produsert i ein kjemisk reaksjon"
+    ],
+    "steg": [
+      {
+        "tittel": "Steg 1: Fyll i flaska",
+        "tekst": "Ha bakepulver i flaska. Tilset nokre dropar konditorfarge og Zalo for effekt.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kva trur du Zalo gjer for reaksjonen?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 2: Start reaksjonen",
+        "tekst": "Hell eddik i flaska og observer reaksjonen.",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kva ser, høyrer og luktar du?",
+        "answer": ""
+      },
+      {
+        "tittel": "Steg 3: Refleksjon",
+        "tekst": "Bakepulver er ein base og eddik er ei syre. Reaksjonen lagar karbondioksidgass (CO2).",
+        "bilde": "bilder/titrering.jpg",
+        "question": "Kvar har du sett denne typen reaksjon før?",
+        "answer": ""
+      }
+    ]
+  }
+}
