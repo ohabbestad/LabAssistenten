@@ -79,7 +79,7 @@ function initializeApp() {
 
             kort.innerHTML = `
                 <h2 class="text-xl font-semibold text-gray-800">${exp.tittel}</h2>
-                <img class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="${exp.foto}" alt="Eksperimentbilde">
+                <img class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="${exp.foto_ill}" alt="Eksperimentbilde">
                 <p class="mt-2 text-gray-600">${exp.ingress}</p>
             `;
 
@@ -96,7 +96,7 @@ function initializeApp() {
         if (!aktueltEksperiment) return;
 
         document.getElementById('eksperiment-tittel').textContent = aktueltEksperiment.tittel;
-        document.getElementById('eksperiment-bilde').src = aktueltEksperiment.foto;
+        document.getElementById('eksperiment-bilde').src = aktueltEksperiment.foto_utstyr;
         document.getElementById('eksperiment-skildring').textContent = aktueltEksperiment.skildring;
 
         const utstyrList = document.getElementById('utstyrsliste');
