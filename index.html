@@ -108,14 +108,18 @@
             <div id="rapport-text-container" class="bg-gray-100 p-6 rounded-lg shadow-inner">
                 <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
             </div>
-
-            <button id="rapport-til-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
-                <i class="fa-solid fa-arrow-left"></i> Forrige
-            </button>
-            <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">
-                <i class="fa-regular fa-copy"></i> Kopier rapport
-            </button>
-
+            <div class="flex">
+                <div class="w-1/2 text-left">
+                    <button id="rapport-til-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                        <i class="fa-solid fa-arrow-left"></i> Forrige
+                    </button>
+                </div>
+                <div class="w-1/2 text-right">
+                    <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">
+                        <i class="fa-regular fa-copy"></i> Kopier rapport
+                    </button>
+                </div>
+            </div>
             <div class="text-center mt-6">
                 <button id="rapport-til-heim-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
                     <i class="fa-regular fa-house"></i> Avbryt og gå til startsida
