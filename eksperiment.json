@@ -1,6 +1,7 @@
 {
   "syre-base-titrering": {
     "tittel": "Syre-base-titrering",
+    "ingress": "Finn pH-verdien til ein ukjend syre ved hjelp av titrering.",
     "foto": "bilder/titrering.jpg",
     "skildring": "Dette forsøket viser hvordan syrer og baser nøytraliserer hverandre. Du skal bruke en titrering for å finne pH-verdien til en ukjent syre.",
     "utstyr": [
@@ -49,6 +50,7 @@
   },
   "dansande-rosiner": {
     "tittel": "Dansende rosiner",
+    "ingress": "Utforsk oppdrift og gassbobler ved hjelp av rosiner i brus.",
     "foto": "bilder/rosinteater.jpg",
     "skildring": "Dette forsøket viser korleis gassbobler påverkar oppdrift. Rosiner bevegjer seg opp og ned i brus fordi bobler festar seg til overflata.",
     "utstyr": [
@@ -94,6 +96,7 @@
   },
   "papirkromatografi": {
     "tittel": "Fargeseparasjon (Kromatografi)",
+    "ingress": "Lær om korleis fargar kan delast opp ved hjelp av papir og vatn.",
     "foto": "bilder/kromatografi.png",
     "skildring": "Forstå korleis kromatografi kan brukast til å skille ulike fargestoff i t.d. ein tusj.",
     "utstyr": [
@@ -140,6 +143,7 @@
   },
   "elektromagnet": {
     "tittel": "Lag en Elektromagnet",
+    "ingress": "Utforsk elektromagnetisme ved å lage din egen elektromagnet.",
     "foto": "bilder/elektromagnet_utstyr.png",
     "skildring": "Lær om samanhengen mellom elektrisitet og magnetisme ved å bygge ein enkel elektromagnet.",
     "utstyr": [
@@ -178,6 +182,7 @@
   },
   "osmose": {
     "tittel": "Osmose med potet",
+    "ingress": "Utforsk osmose ved å bruke potet og ulike løysningar.",
     "foto": "bilder/rosinteater.jpg",
     "skildring": "Observer effekten av osmose (vanntransport) i planteceller.",
     "utstyr": [
@@ -218,6 +223,7 @@
   },
   "vulkan": {
     "tittel": "Kjemisk Vulkan",
+    "ingress": "Demonstrer ein syre-base-reaksjon som produserer gass (CO2).",
     "foto": "bilder/titrering.jpg",
     "skildring": "Demonstrer ein syre-base-reaksjon som produserer gass (CO2).",
     "utstyr": [
