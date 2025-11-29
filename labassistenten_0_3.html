@@ -89,13 +89,18 @@
                     <textarea id="steg-svar" class="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                 </div>
             </div>
-
-            <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
-                <i class="fa-solid fa-arrow-left"></i> Forrige
-            </button>
-            <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
-                <i class="fa-solid fa-arrow-right"></i> Neste
-            </button>
+            <div class="flex">
+                <div class="w-1/2 text-left">
+                    <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                        <i class="fa-solid fa-arrow-left"></i> Forrige
+                    </button>
+                </div>
+                <div class="w-1/2 text-right">
+                    <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        <i class="fa-solid fa-arrow-right"></i> Neste
+                    </button>
+                </div>
+            </div>
 
             
             <div class="text-center mt-6">
@@ -119,8 +124,8 @@
                 <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
             </div>
 
-            <button id="rapport-til-steg-btn" class="mt-8 ml-4 bg-blue-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
-                <i class="fa-regular fa-circle-play"></i> Gjer endringar i rapporten
+            <button id="rapport-til-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left"></i> Forrige
             </button>
             <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">
                 <i class="fa-regular fa-copy"></i> Kopier rapport
@@ -344,7 +349,7 @@
             const nesteStegBtn = document.getElementById('neste-steg-btn');
             const stegSvarInput = document.getElementById('steg-svar');
             const kopierRapportBtn = document.getElementById('kopier-rapport-btn');
-            const startNyBtn = document.getElementById('start-ny-btn');
+            // const startNyBtn = document.getElementById('start-ny-btn');
             const rapportText = document.getElementById('rapport-text');
 
             const stegTilHeimBtn = document.getElementById('steg-til-heim-btn');
@@ -360,25 +365,25 @@
 
             // --- localStorage-funksjonar (Oppdatert) ---
             function saveAnswersToLocalStorage() {
-                // NY: Hentar alle nøklar frå experiments-objektet dynamisk
-                const allExperimentKeys = Object.keys(experiments);
-                const answersToSave = {};
+                // Hentar alle nøklar frå experiments-objektet dynamisk
+                const eksperimentKeys = Object.keys(experiments);
+                const lagraSvar = {};
                 
-                allExperimentKeys.forEach(key => {
+                eksperimentKeys.forEach(key => {
                     if (experiments[key] && experiments[key].steg) {
-                        answersToSave[key] = experiments[key].steg.map(step => step.answer);
+                        lagraSvar[key] = experiments[key].steg.map(step => step.answer);
                     }
                 });
                 
-                localStorage.setItem('labAssistentSvar', JSON.stringify(answersToSave));
+                localStorage.setItem('labAssistentSvar', JSON.stringify(lagraSvar));
             }
 
             function loadAnswersFromLocalStorage() {
                 const savedAnswers = JSON.parse(localStorage.getItem('labAssistentSvar'));
                 if (savedAnswers) {
-                    // NY: Lastar alle nøklar som finst i localStorage
-                    const allExperimentKeys = Object.keys(experiments);
-                    allExperimentKeys.forEach(key => {
+                    // Lastar alt som finst i localStorage
+                    const eksperimentKeys = Object.keys(experiments);
+                    eksperimentKeys.forEach(key => {
                         if (savedAnswers[key] && experiments[key] && experiments[key].steg) {
                             experiments[key].steg.forEach((step, index) => {
                                 step.answer = savedAnswers[key][index] || "";
@@ -392,7 +397,7 @@
             // --- localStorage-funksjonar slutt ---
 
 
-            // Funksjoner for å bytte visning
+            // Funksjonar for å bytte visning
             function showView(viewToShow) {
                 window.speechSynthesis.cancel();
                 const views = [homeView, oversiktView, stegView, rapportView];
@@ -490,7 +495,6 @@
                 loadExperimentOverview("dansande-rosiner");
             });
 
-            // === NYE EVENT LISTENERS START ===
             document.getElementById('papir-kort').addEventListener('click', () => {
                 loadExperimentOverview("papirkromatografi");
             });
@@ -506,7 +510,6 @@
             document.getElementById('vulkan-kort').addEventListener('click', () => {
                 loadExperimentOverview("vulkan");
             });
-            // === NYE EVENT LISTENERS SLUTT ===
 
             startEksperimentBtn.addEventListener('click', () => {
                 aktueltStegIndex = 0;
@@ -553,8 +556,8 @@
                 selection.removeAllRanges();
             });
 
-            startNyBtn.addEventListener('click', () => {
-                /*const erSikker = confirm("Er du sikker? Dette vil slette alle lagra svar for alle forsøka.");
+            /*startNyBtn.addEventListener('click', () => {
+                const erSikker = confirm("Er du sikker? Dette vil slette alle lagra svar for alle forsøka.");
                 if (erSikker) {
                     localStorage.removeItem('labAssistentSvar');
                     // NY: Nullstill alle svar i minnet
@@ -564,9 +567,9 @@
                         }
                     });
                     showView(homeView);
-                }*/
+                }
                 showView(homeView);
-            });
+            });*/
 
             stegTilHeimBtn.addEventListener('click', () => {
                 /*const erSikker = confirm("Er du sikker på at du vil avbryte og gå tilbake til heimsida?");
