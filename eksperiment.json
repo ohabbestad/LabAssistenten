@@ -49,7 +49,7 @@
     ]
   },
   "dansande-rosiner": {
-    "tittel": "Dansende rosiner",
+    "tittel": "Dansande rosiner",
     "ingress": "Utforsk oppdrift og gassbobler ved hjelp av rosiner i brus.",
     "foto": "bilder/rosinteater.jpg",
     "skildring": "I dette forsøket skal du vise korleis gassbobler påverkar oppdrift.",
@@ -95,14 +95,14 @@
     ]
   },
   "papirkromatografi": {
-    "tittel": "Fargeseparasjon (Kromatografi)",
+    "tittel": "Kromatografi med papir",
     "ingress": "Lær om korleis fargar kan delast opp ved hjelp av papir og vatn.",
     "foto": "bilder/kromatografi.png",
     "skildring": "Forstå korleis kromatografi kan brukast til å skille ulike fargestoff i t.d. ein tusj.",
     "utstyr": [
       "Glass",
       "Vatn",
-      "Filterpapir (f.eks. kaffefilter)",
+      "Filterpapir (f.eks. kaffifilter)",
       "Svart tusj (vassløyseleg)",
       "Saks"
     ],
@@ -122,19 +122,19 @@
         "tittel": "Steg 2: Teikn strek",
         "tekst": "Teikn ei tjukk strek nedst på strimmelen med tusjen, ca. 2 cm frå kanten.",
         "bilde": "bilder/kromatografi.png",
-        "sporsmal": "Kva trur du skjer om streken er under vatn?",
+        "sporsmal": "I neste steg skal du senke filterpapiret i vatn, utan at tusjstreken er under vatn. Kva trur du skjer?",
         "svar": ""
       },
       {
         "tittel": "Steg 3: Plasser i vatn",
         "tekst": "Plasser strimmelen i eit glass med litt vatn i botnen. Vatnet skal akkurat røre papiret, men ikkje tusjstreken.",
         "bilde": "bilder/kromatografi.png",
-        "sporsmal": "Kva observerer du?",
+        "sporsmal": "Kva observerar du?",
         "svar": ""
       },
       {
         "tittel": "Steg 4: Konklusjon",
-        "tekst": "Sjå korleis fargane har skilt seg og klatra oppover papiret.",
+        "tekst": "Studer korleis fargen frå tusjstreken har endra seg.",
         "bilde": "bilder/kromatografi.png",
         "sporsmal": "Kva fargar bestod den svarte tusjen av?",
         "svar": ""
@@ -142,14 +142,14 @@
     ]
   },
   "elektromagnet": {
-    "tittel": "Lag en Elektromagnet",
-    "ingress": "Utforsk elektromagnetisme ved å lage din egen elektromagnet.",
+    "tittel": "Lag ein Elektromagnet",
+    "ingress": "Utforsk elektromagnetisme ved å lage din eigen elektromagnet.",
     "foto": "bilder/elektromagnet_utstyr.png",
-    "skildring": "Lær om samanhengen mellom elektrisitet og magnetisme ved å bygge ein enkel elektromagnet.",
+    "skildring": "Lær om samanhengen mellom elektrisitet og magnetisme ved å byggje ein enkel elektromagnet.",
     "utstyr": [
       "Batteri (f.eks. 9V)",
       "Ein stor jernspikar",
-      "Isolert kopartråd",
+      "Uisolert kopartråd",
       "Små binders"
     ],
     "maal": [
@@ -161,21 +161,21 @@
         "tittel": "Steg 1: Surr tråden",
         "tekst": "Surr kopartråden tett rundt spikaren, men la endane vere frie.",
         "bilde": "bilder/titrering.jpg",
-        "sporsmal": "Speler det ei rolle kva veg du surrar?",
+        "sporsmal": "Trur du det speler ei rolle kva veg du surrar kopartråden?",
         "svar": ""
       },
       {
-        "tittel": "Steg 2: Koble til batteri",
-        "tekst": "Koble endane av tråden til polane på batteriet. OBS: Det kan bli varmt!",
+        "tittel": "Steg 2: Kople til batteri",
+        "tekst": "Kople endane av tråden til polane på batteriet. OBS: Det kan bli varmt! Prøv å plukke opp binders med spikaren.",
         "bilde": "bilder/titrering.jpg",
-        "sporsmal": "Kva skjer om du koblar frå batteriet?",
+        "sporsmal": "Kva skjer om du koplar frå batteriet?",
         "svar": ""
       },
       {
-        "tittel": "Steg 3: Test magneten",
-        "tekst": "Prøv å plukke opp binders med spikaren.",
+        "tittel": "Steg 3: Konklusjon",
+        "tekst": "Eksperimenter med den nye elektromagneten din. Kan du bruke den på andre metallobjekt?",
         "bilde": "bilder/titrering.jpg",
-        "sporsmal": "Kor mange binders klarte du å løfte? Kva skjer om du surrar fleire rundar?",
+        "sporsmal": "Kor mange binders klarte du å løfte? Kva skjer om du surrar fleire rundar? Kan du løfte kva som helst metallobjekt?",
         "svar": ""
       }
     ]
