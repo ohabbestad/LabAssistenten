@@ -40,7 +40,7 @@ function initializeApp() {
         
         eksperimentKeys.forEach(key => {
             if (eksperiment[key] && eksperiment[key].steg) {
-                lagraSvar[key] = eksperiment[key].steg.map(step => step.answer);
+                lagraSvar[key] = eksperiment[key].steg.map(step => step.svar);
             }
         });
         
@@ -55,7 +55,7 @@ function initializeApp() {
             eksperimentKeys.forEach(key => {
                 if (savedAnswers[key] && eksperiment[key] && eksperiment[key].steg) {
                     eksperiment[key].steg.forEach((step, index) => {
-                        step.answer = savedAnswers[key][index] || "";
+                        step.svar = savedAnswers[key][index] || "";
                     });
                 }
             });
@@ -124,7 +124,7 @@ function initializeApp() {
 
         document.getElementById('step-tittel').textContent = step.tittel;
         document.getElementById('step-text').textContent = step.tekst;
-        document.getElementById('step-question').textContent = step.question;
+        document.getElementById('step-question').textContent = step.sporsmal;
 
         const mediaContainer = document.getElementById('step-media');
         mediaContainer.innerHTML = ''; 
@@ -137,7 +137,7 @@ function initializeApp() {
             mediaContainer.appendChild(img);
         }
         
-        stegSvarInput.value = step.answer || '';
+        stegSvarInput.value = step.svar || '';
         stegSvarInput.focus();
         
         forrigeStegBtn.classList.toggle('hidden', index === 0);
@@ -164,8 +164,8 @@ function initializeApp() {
 
         aktueltEksperiment.steg.forEach(step => {
             reportContent += `\n${step.tittel}\n`;
-            reportContent += `Spørsmål: ${step.question}\n`;
-            reportContent += `Svar: ${step.answer}\n`;
+            reportContent += `Spørsmål: ${step.sporsmal}\n`;
+            reportContent += `Svar: ${step.svar}\n`;
         });
 
         rapportText.textContent = reportContent;
@@ -209,7 +209,7 @@ function initializeApp() {
     });
 
     forrigeStegBtn.addEventListener('click', () => {
-        aktueltEksperiment.steg[aktueltStegIndex].answer = stegSvarInput.value;
+        aktueltEksperiment.steg[aktueltStegIndex].svar = stegSvarInput.value;
         saveAnswersToLocalStorage();
 
         aktueltStegIndex--;
@@ -218,7 +218,7 @@ function initializeApp() {
     });
 
     nesteStegBtn.addEventListener('click', () => {
-        aktueltEksperiment.steg[aktueltStegIndex].answer = stegSvarInput.value;
+        aktueltEksperiment.steg[aktueltStegIndex].svar = stegSvarInput.value;
         saveAnswersToLocalStorage(); 
 
         if (aktueltStegIndex < aktueltEksperiment.steg.length - 1) {
