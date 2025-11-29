@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab-assistenten</title>
+
+    <script src="https://kit.fontawesome.com/207e147084.js" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="p-8">
+
+    <div id="main-container" class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+
+        <div id="heim-view" class="active-view">
+            <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Velkommen til Lab-assistenten</h1>
+            <p class="text-center text-lg mb-8 text-gray-600">Velg eit forsøk du vil starte:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div id="syre-base-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Syre-base-titrering</h2>
+                    <p class="mt-2 text-gray-600">Lær om nøytralisering og pH-verdi ved å utføre ei titrering.</p>
+                </div>
+                <div id="dansande-rosiner-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Dansande rosiner</h2>
+                    <p class="mt-2 text-gray-600">Utforsk fenomenet med rosiner som dansar i kullsyre-vatn.</p>
+                </div>
+                
+                <div id="papir-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Fargeseparasjon</h2>
+                    <p class="mt-2 text-gray-600">Forstå korleis kromatografi kan brukast til å skille ulike fargestoff.</p>
+                </div>
+                <div id="magnet-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Lag ein Elektromagnet</h2>
+                    <p class="mt-2 text-gray-600">Lær om samanhengen mellom elektrisitet og magnetisme.</p>
+                </div>
+                <div id="osmose-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Osmose med potet</h2>
+                    <p class="mt-2 text-gray-600">Observer effekten av osmose (vanntransport) i planteceller.</p>
+                </div>
+                <div id="vulkan-kort" class="bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 transition-colors duration-300">
+                    <h2 class="text-xl font-semibold text-gray-800">Kjemisk Vulkan</h2>
+                    <p class="mt-2 text-gray-600">Demonstrer ein syre-base-reaksjon som produserer gass.</p>
+                </div>
+                </div>
+        </div>
+
+        <div id="oversikt-view" class="hidden">
+            <h1 id="eksperiment-tittel" class="text-3xl font-bold mb-4 text-gray-800"></h1>
+            
+            <button id="les-opp-oversikt-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
+                <i class="fa-brands fa-readme"></i> Les opp tekst
+            </button>
+
+            <img id="eksperiment-bilde" class="w-full max-w-md mx-auto rounded-lg shadow-md mb-6" src="" alt="Eksperimentbilde">
+
+            <p id="eksperiment-skildring" class="text-lg text-gray-600 mb-6"></p>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Utstyr</h2>
+            <ul id="utstyrsliste" class="list-disc list-inside space-y-1 text-gray-700"></ul>
+
+            <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Mål</h2>
+            <ul id="maal-liste" class="list-disc list-inside space-y-1 text-gray-700"></ul>
+
+            <button id="heim-btn" class="mt-8 bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left"></i> Tilbake
+            </button>
+            <button id="start-eksperiment-btn" class="mt-8 ml-4 bg-blue-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                <i class="fa-regular fa-circle-play"></i> Start forsøket
+            </button>
+        </div>
+
+        <div id="steg-view" class="hidden">
+            <div id="step-content" class="mb-6">
+                <h2 id="step-tittel" class="text-2xl font-semibold mb-2 text-gray-800"></h2>
+                
+                <button id="les-opp-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
+                    <i class="fa-brands fa-readme"></i> Les opp tekst
+                </button>
+
+                <p id="step-text" class="text-lg text-gray-700 mb-4"></p>
+                
+                
+                
+                <div id="step-media" class="mb-4"></div>
+                
+                <div id="step-question-container" class="mt-6 p-4 border border-gray-300 rounded-md bg-gray-50">
+                    <p id="step-question" class="font-medium text-gray-800 mb-2"></p>
+                    <textarea id="steg-svar" class="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="w-1/2 text-left">
+                    <button id="forrige-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                        <i class="fa-solid fa-arrow-left"></i> Forrige
+                    </button>
+                </div>
+                <div class="w-1/2 text-right">
+                    <button id="neste-steg-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        <i class="fa-solid fa-arrow-right"></i> Neste
+                    </button>
+                </div>
+            </div>
+
+            
+            <div class="text-center mt-6">
+                <button id="steg-til-heim-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                    <i class="fa-regular fa-house"></i> Avbryt og gå til startsida
+                </button>
+            </div>
+
+        </div>
+
+        <div id="rapport-view" class="hidden">
+            <h1 class="text-3xl font-bold mb-4 text-gray-800">Lab-rapport</h1>
+
+            <p class="text-gray-600 mb-6">Her er svara dine. Du kan kopiere teksten og bruke den som utgangspunkt for rapporten din.</p>
+            
+            <button id="les-opp-rapport-btn" class="my-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-blue-600 transition-colors duration-300">
+                <i class="fa-brands fa-readme"></i> Les opp rapport
+            </button>
+            
+            <div id="rapport-text-container" class="bg-gray-100 p-6 rounded-lg shadow-inner">
+                <pre id="rapport-text" class="whitespace-pre-wrap text-gray-800 font-mono text-sm"></pre>
+            </div>
+
+            <button id="rapport-til-steg-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left"></i> Forrige
+            </button>
+            <button id="kopier-rapport-btn" class="mt-6 bg-green-600 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">
+                <i class="fa-regular fa-copy"></i> Kopier rapport
+            </button>
+
+            <div class="text-center mt-6">
+                <button id="rapport-til-heim-btn" class="bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-lg hover:bg-gray-500 transition-colors duration-300">
+                    <i class="fa-regular fa-house"></i> Avbryt og gå til startsida
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Array med forsøksdata
+        document.addEventListener ('DOMContentLoaded', () => { 
+            const experiments = {
+                "syre-base-titrering": {
+                    tittel: "Syre-base-titrering",
+                    foto: "bilder/titrering.jpg",
+                    skildring: "Dette forsøket viser hvordan syrer og baser nøytraliserer hverandre. Du skal bruke en titrering for å finne pH-verdien til en ukjent syre.",
+                    utstyr: ["Begerglass", "Byrette", "Pipette", "pH-indikator", "Ukjent syre", "Sterk base"],
+                    maal: ["Lære om nøytralisering", "Forstå pH-skalaen", "Utføre en titrering korrekt"],
+                    steg: [
+                        {   tittel: "Steg 1: Klargjering av utstyr", 
+                            tekst:  "Før du startar, må du gjere klart alt utstyret. Vask begerglas, byrette og pipette grundig med destillert vatn. Fyll byretten med den sterke basen.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kvifor er det viktig å vaske alt utstyret med destillert vatn før forsøket startar?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 2: Førebuing av syra", 
+                            tekst: "Mål opp nøyaktig 25 ml av den ukjende syra med pipetten, og overfør ho til begerglasset. Tilset eit par dråpar pH-indikator.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kva fargeendring forventar du å sjå i løpet av forsøket, og kva indikerer ho?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 3: Titrering", 
+                            tekst: "Drypp forsiktig den sterke basen frå byretten ned i begerglasset med syra. Rør kontinuerleg. Stopp når fargen på indikatoren endrar seg og held seg der.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kva skjer kjemisk i begerglaset når syra blir nøytralisert av basen?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 4: Resultat og konklusjon", 
+                            tekst: "Les av volumet av base som vart brukt frå byretten. Bruk dette til å rekne ut konsentrasjonen av den ukjende syra. Dette punktet er nøytraliseringspunktet.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kva er nøytraliseringspunktet, og kva kan du seie om konsentrasjonen til syra basert på ditt resultat?", 
+                            answer: "" 
+                        }
+                    ]
+                },
+                
+                "dansande-rosiner": {
+                    tittel: "Dansende rosiner",
+                    foto: "bilder/rosinteater.jpg",
+                    skildring: "Dette forsøket viser korleis gassbobler påverkar oppdrift. Rosiner bevegjer seg opp og ned i brus fordi bobler festar seg til overflata.",
+                    utstyr: ["Begerglass", "Brus med kullsyre", "Rosiner"],
+                    maal: ["Observere korleis gassbobler påverkar oppdrift", "Forstå samanhengen mellom tettleik og volum", "Drøfte Arkimedes' prinsipp i praksis"],
+                    steg: [
+                        {   tittel: "Steg 1: Klargjering av utstyr", 
+                            tekst: "Fyll begerglasset med brus. Sjå til at det er nok kullsyre i drikken.", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Det kan vera freistande å ta ein slurk frå begerglasset. Kvifor skal du ikkje gjere det?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 2: Tilset rosiner", 
+                            tekst: "Legg 4–6 rosiner forsiktig ned i glaset med brus.", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Skildre kva som skjer med rosinene rett etter at dei blir lagde i glaset. Kvifor trur du dette skjer?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 3: Observer rørsla", 
+                            tekst: "Sjå korleis rosinene synk fyrst, for så å byrja å stiga opp og ned i glaset.", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Kva får rosinene til å stiga opp til overflata, og kvifor synk dei igjen?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 4: Drøft fenomenet", 
+                            tekst: "Snakk om korleis boblene endrar rosinens tettleik og oppdrift. Knytt dette til Arkimedes' prinsipp: Ein gjenstand som er heilt eller delvis nedsenka i ei væske får ein oppdrift lik vekta av den væskemengda som gjenstanden fortrenger.", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Korleis kan vi forklare dette forsøket med omgrepa oppdrift og tettleik?", 
+                            answer: "" 
+                        }
+                    ]
+                },
+
+                // === NYE FORSØK START ===
+                "papirkromatografi": {
+                    tittel: "Fargeseparasjon (Kromatografi)",
+                    foto: "bilder/kromatografi.png", // NY: PLASSHALDARBILETE
+                    skildring: "Forstå korleis kromatografi kan brukast til å skille ulike fargestoff i t.d. ein tusj.",
+                    utstyr: ["Glass", "Vatn", "Filterpapir (f.eks. kaffefilter)", "Svart tusj (vassløyseleg)", "Saks"],
+                    maal: ["Lære om kromatografi", "Sjå at fargar er blanda saman av fleire fargar"],
+                    steg: [
+                        {   
+                            tittel: "Steg 1: Klipp papir", 
+                            tekst: "Klipp ei strimmel av filterpapiret.", 
+                            bilde: "bilder/kromatografi.png", 
+                            question: "Kvifor trur du vi bruker filterpapir?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 2: Teikn strek", 
+                            tekst: "Teikn ei tjukk strek nedst på strimmelen med tusjen, ca. 2 cm frå kanten.", 
+                            bilde: "bilder/kromatografi.png", 
+                            question: "Kva trur du skjer om streken er under vatn?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 3: Plasser i vatn", 
+                            tekst: "Plasser strimmelen i eit glass med litt vatn i botnen. Vatnet skal akkurat røre papiret, men ikkje tusjstreken.", 
+                            bilde: "bilder/kromatografi.png", 
+                            question: "Kva observerer du?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 4: Konklusjon", 
+                            tekst: "Sjå korleis fargane har skilt seg og klatra oppover papiret.", 
+                            bilde: "bilder/kromatografi.png", 
+                            question: "Kva fargar bestod den svarte tusjen av?", 
+                            answer: "" 
+                        }
+                    ]
+                },
+                "elektromagnet": {
+                    tittel: "Lag en Elektromagnet",
+                    foto: "bilder/elektromagnet_utstyr.png", // NY: PLASSHALDARBILETE
+                    skildring: "Lær om samanhengen mellom elektrisitet og magnetisme ved å bygge ein enkel elektromagnet.",
+                    utstyr: ["Batteri (f.eks. 9V)", "Ein stor jernspikar", "Isolert kopartråd", "Små binders"],
+                    maal: ["Forstå prinsippet bak elektromagnetisme", "Bygge ein fungerande elektromagnet"],
+                    steg: [
+                        {   tittel: "Steg 1: Surr tråden", 
+                            tekst: "Surr kopartråden tett rundt spikaren, men la endane vere frie.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Speler det ei rolle kva veg du surrar?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 2: Koble til batteri", 
+                            tekst: "Koble endane av tråden til polane på batteriet. OBS: Det kan bli varmt!", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kva skjer om du koblar frå batteriet?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 3: Test magneten", 
+                            tekst: "Prøv å plukke opp binders med spikaren.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kor mange binders klarte du å løfte? Kva skjer om du surrar fleire rundar?", 
+                            answer: "" 
+                        }
+                    ]
+                },
+                "osmose": {
+                    tittel: "Osmose med potet",
+                    foto: "bilder/rosinteater.jpg", // NY: PLASSHALDARBILETE
+                    skildring: "Observer effekten av osmose (vanntransport) i planteceller.",
+                    utstyr: ["Ein potet", "Kniv", "Tre skåler", "Vatn", "Salt", "Sukker"],
+                    maal: ["Forstå kva osmose er", "Observere korleis celler reagerer på ulikt vasspotensial"],
+                    steg: [
+                        {   tittel: "Steg 1: Kutt potet", 
+                            tekst: "Kutt tre like store potetbitar.", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Kvifor er det viktig at bitane er like store?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 2: Fyll skåler", 
+                            tekst: "Fyll éi skål med reint vatn, éi med sterkt saltvatn, og éi med sterkt sukkervatn.", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Kva er hypotesen din for kvar bit?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 3: Vent og observer", 
+                            tekst: "Legg éin potetbit i kvar skål og la dei ligge i ein time. Kva har skjedd med konsistensen?", 
+                            bilde: "bilder/rosinteater.jpg", 
+                            question: "Skildre skilnaden på biten i reint vatn og biten i saltvatn.", 
+                            answer: "" 
+                        }
+                    ]
+                },
+                "vulkan": {
+                    tittel: "Kjemisk Vulkan",
+                    foto: "bilder/titrering.jpg", // NY: PLASSHALDARBILETE
+                    skildring: "Demonstrer ein syre-base-reaksjon som produserer gass (CO2).",
+                    utstyr: ["Lita flaske eller glass", "Bakepulver", "Eddik", "Konditorfarge (valfritt)", "Zalo (valfritt)"],
+                    maal: ["Lære om syre-base-reaksjonar", "Sjå korleis gass blir produsert i ein kjemisk reaksjon"],
+                    steg: [
+                        {   tittel: "Steg 1: Fyll i flaska", 
+                            tekst: "Ha bakepulver i flaska. Tilset nokre dropar konditorfarge og Zalo for effekt.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kva trur du Zalo gjer for reaksjonen?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 2: Start reaksjonen", 
+                            tekst: "Hell eddik i flaska og observer reaksjonen.", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kva ser, høyrer og luktar du?", 
+                            answer: "" 
+                        },
+                        {   tittel: "Steg 3: Refleksjon", 
+                            tekst: "Bakepulver er ein base og eddik er ei syre. Reaksjonen lagar karbondioksidgass (CO2).", 
+                            bilde: "bilder/titrering.jpg", 
+                            question: "Kvar har du sett denne typen reaksjon før?", 
+                            answer: "" 
+                        }
+                    ]
+                }
+                // === NYE FORSØK SLUTT ===
+            };
+        
+
+            // DOM-elementer
+            const homeView = document.getElementById('heim-view');
+            const oversiktView = document.getElementById('oversikt-view');
+            const stegView = document.getElementById('steg-view');
+            const rapportView = document.getElementById('rapport-view');
+
+            const mainContainer = document.getElementById('main-container');
+
+            const startEksperimentBtn = document.getElementById('start-eksperiment-btn');
+            const heimBtn = document.getElementById('heim-btn');
+            const forrigeStegBtn = document.getElementById('forrige-steg-btn');
+            const nesteStegBtn = document.getElementById('neste-steg-btn');
+            const stegSvarInput = document.getElementById('steg-svar');
+            const kopierRapportBtn = document.getElementById('kopier-rapport-btn');
+            // const startNyBtn = document.getElementById('start-ny-btn');
+            const rapportText = document.getElementById('rapport-text');
+
+            const stegTilHeimBtn = document.getElementById('steg-til-heim-btn');
+            const lesOppBtn = document.getElementById('les-opp-btn');
+            const lesOppOversiktBtn = document.getElementById('les-opp-oversikt-btn');
+            const lesRapportBtn = document.getElementById('les-opp-rapport-btn');
+            const rapportTilStegBtn = document.getElementById('rapport-til-steg-btn');
+            const rapportTilHeimBtn = document.getElementById('rapport-til-heim-btn');
+
+
+            let aktueltEksperiment = null;
+            let aktueltStegIndex = 0;
+
+            // --- localStorage-funksjonar (Oppdatert) ---
+            function saveAnswersToLocalStorage() {
+                // Hentar alle nøklar frå experiments-objektet dynamisk
+                const eksperimentKeys = Object.keys(experiments);
+                const lagraSvar = {};
+                
+                eksperimentKeys.forEach(key => {
+                    if (experiments[key] && experiments[key].steg) {
+                        lagraSvar[key] = experiments[key].steg.map(step => step.answer);
+                    }
+                });
+                
+                localStorage.setItem('labAssistentSvar', JSON.stringify(lagraSvar));
+            }
+
+            function loadAnswersFromLocalStorage() {
+                const savedAnswers = JSON.parse(localStorage.getItem('labAssistentSvar'));
+                if (savedAnswers) {
+                    // Lastar alt som finst i localStorage
+                    const eksperimentKeys = Object.keys(experiments);
+                    eksperimentKeys.forEach(key => {
+                        if (savedAnswers[key] && experiments[key] && experiments[key].steg) {
+                            experiments[key].steg.forEach((step, index) => {
+                                step.answer = savedAnswers[key][index] || "";
+                            });
+                        }
+                    });
+                }
+            }
+            
+            loadAnswersFromLocalStorage();
+            // --- localStorage-funksjonar slutt ---
+
+
+            // Funksjonar for å bytte visning
+            function showView(viewToShow) {
+                window.speechSynthesis.cancel();
+                const views = [homeView, oversiktView, stegView, rapportView];
+                views.forEach(view => view.classList.add('hidden'));
+                viewToShow.classList.remove('hidden');
+            }
+
+            function loadExperimentOverview(experimentKey) {
+                aktueltEksperiment = experiments[experimentKey];
+                if (!aktueltEksperiment) return;
+
+                document.getElementById('eksperiment-tittel').textContent = aktueltEksperiment.tittel;
+                document.getElementById('eksperiment-bilde').src = aktueltEksperiment.foto;
+                document.getElementById('eksperiment-skildring').textContent = aktueltEksperiment.skildring;
+
+                const utstyrList = document.getElementById('utstyrsliste');
+                utstyrList.innerHTML = '';
+                aktueltEksperiment.utstyr.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    utstyrList.appendChild(li);
+                });
+
+                const goalList = document.getElementById('maal-liste');
+                goalList.innerHTML = '';
+                aktueltEksperiment.maal.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    goalList.appendChild(li);
+                });
+
+                showView(oversiktView);
+            }
+
+            function loadStep(index) {
+                const step = aktueltEksperiment.steg[index];
+                if (!step) return;
+
+                document.getElementById('step-tittel').textContent = step.tittel;
+                document.getElementById('step-text').textContent = step.tekst;
+                document.getElementById('step-question').textContent = step.question;
+
+                const mediaContainer = document.getElementById('step-media');
+                mediaContainer.innerHTML = ''; 
+
+                if (step.bilde) {
+                    const img = document.createElement('img');
+                    img.src = step.bilde;
+                    img.alt = step.tittel;
+                    img.className = "w-full max-w-md mx-auto rounded-lg shadow-md mb-4"; 
+                    mediaContainer.appendChild(img);
+                }
+                
+                stegSvarInput.value = step.answer || '';
+                stegSvarInput.focus();
+                
+                forrigeStegBtn.classList.toggle('hidden', index === 0);
+                if (index === aktueltEksperiment.steg.length - 1) {
+                    nesteStegBtn.innerHTML = '<i class="fa-solid fa-marker"></i> Generer rapport';
+                } else {
+                    nesteStegBtn.innerHTML = 'Neste <i class="fa-solid fa-arrow-right"></i>';
+                }
+
+                showView(stegView);
+            }
+
+            function genererRapport() {
+                let reportContent = `Lab-rapport: ${aktueltEksperiment.tittel}\n\n`;
+                reportContent += `Mål:\n`;
+                aktueltEksperiment.maal.forEach(goal => {
+                    reportContent += `- ${goal}\n`;
+                });
+                reportContent += `\nUtstyr:\n`;
+                aktueltEksperiment.utstyr.forEach(item => {
+                    reportContent += `- ${item}\n`;
+                });
+                reportContent += `\nGjennomføring og resultater:\n`;
+
+                aktueltEksperiment.steg.forEach(step => {
+                    reportContent += `\n${step.tittel}\n`;
+                    reportContent += `Spørsmål: ${step.question}\n`;
+                    reportContent += `Svar: ${step.answer}\n`;
+                });
+
+                rapportText.textContent = reportContent;
+                showView(rapportView);
+            }
+
+            // Event listeners
+            document.getElementById('syre-base-kort').addEventListener('click', () => {
+                loadExperimentOverview("syre-base-titrering");
+            });
+
+            document.getElementById('dansande-rosiner-kort').addEventListener('click', () => {
+                loadExperimentOverview("dansande-rosiner");
+            });
+
+            document.getElementById('papir-kort').addEventListener('click', () => {
+                loadExperimentOverview("papirkromatografi");
+            });
+            
+            document.getElementById('magnet-kort').addEventListener('click', () => {
+                loadExperimentOverview("elektromagnet");
+            });
+
+            document.getElementById('osmose-kort').addEventListener('click', () => {
+                loadExperimentOverview("osmose");
+            });
+
+            document.getElementById('vulkan-kort').addEventListener('click', () => {
+                loadExperimentOverview("vulkan");
+            });
+
+            startEksperimentBtn.addEventListener('click', () => {
+                aktueltStegIndex = 0;
+                loadStep(aktueltStegIndex);
+            });
+
+            heimBtn.addEventListener('click', () => {
+                showView(homeView);
+            });
+
+            forrigeStegBtn.addEventListener('click', () => {
+                aktueltEksperiment.steg[aktueltStegIndex].answer = stegSvarInput.value;
+                saveAnswersToLocalStorage();
+
+                aktueltStegIndex--;
+                loadStep(aktueltStegIndex);
+                
+            });
+
+            nesteStegBtn.addEventListener('click', () => {
+                aktueltEksperiment.steg[aktueltStegIndex].answer = stegSvarInput.value;
+                saveAnswersToLocalStorage(); 
+
+                if (aktueltStegIndex < aktueltEksperiment.steg.length - 1) {
+                    aktueltStegIndex++;
+                    loadStep(aktueltStegIndex);
+                } else {
+                    genererRapport();
+                }
+            });
+
+            kopierRapportBtn.addEventListener('click', () => {
+                const range = document.createRange();
+                range.selectNodeContents(rapportText);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                try {
+                    document.execCommand('copy');
+                    alert('Rapporten er kopiert til utklippstavlen!');
+                } catch (err) {
+                    console.error('Kunne ikke kopiere tekst: ', err);
+                }
+                selection.removeAllRanges();
+            });
+
+            /*startNyBtn.addEventListener('click', () => {
+                const erSikker = confirm("Er du sikker? Dette vil slette alle lagra svar for alle forsøka.");
+                if (erSikker) {
+                    localStorage.removeItem('labAssistentSvar');
+                    // NY: Nullstill alle svar i minnet
+                    Object.keys(experiments).forEach(key => {
+                        if (experiments[key] && experiments[key].steg) {
+                            experiments[key].steg.forEach(step => step.answer = "");
+                        }
+                    });
+                    showView(homeView);
+                }
+                showView(homeView);
+            });*/
+
+            stegTilHeimBtn.addEventListener('click', () => {
+                /*const erSikker = confirm("Er du sikker på at du vil avbryte og gå tilbake til heimsida?");
+                
+                if (erSikker) {
+                    // NY: Lagre aktivt svar før ein går heim
+                    aktueltEksperiment.steg[aktueltStegIndex].answer = stegSvarInput.value;
+                    saveAnswersToLocalStorage();
+                    showView(homeView);
+                }*/
+                showView(homeView);
+            });
+
+            lesOppBtn.addEventListener('click', () => {
+                const tittel = document.getElementById('step-tittel').textContent;
+                const text = document.getElementById('step-text').textContent;
+                const question = document.getElementById('step-question').textContent;
+                
+                const textToRead = `${tittel}. ${text}. Spørsmål: ${question}`;
+
+                window.speechSynthesis.cancel(); 
+                
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'nb-NO';
+                window.speechSynthesis.speak(utterance);
+            });
+
+            lesOppOversiktBtn.addEventListener('click', () => {
+                const tittel = aktueltEksperiment.tittel;
+                const text = aktueltEksperiment.skildring;
+                const utstyr = aktueltEksperiment.utstyr.join(', ');
+                const maal = aktueltEksperiment.maal.join(', ');
+                
+                const textToRead = `${tittel}. ${text}. Utstyr: ${utstyr}. Mål: ${maal}.`;
+
+                window.speechSynthesis.cancel(); 
+                
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'nb-NO';
+                window.speechSynthesis.speak(utterance);
+            });
+            
+            lesRapportBtn.addEventListener('click', () => {
+                const reportContent = rapportText.textContent;
+                
+                window.speechSynthesis.cancel(); 
+                
+                const utterance = new SpeechSynthesisUtterance(reportContent);
+                utterance.lang = 'nb-NO';
+                window.speechSynthesis.speak(utterance);
+            });
+
+            rapportTilStegBtn.addEventListener('click', () => {
+                //aktueltStegIndex = 0;
+                loadStep(aktueltStegIndex);
+            });
+
+            rapportTilHeimBtn.addEventListener('click', () => {
+                showView(homeView);
+            });
+            
+            // Fjern lagra svar når brukaren forlet sida
+            window.addEventListener('beforeunload', () => {
+                localStorage.removeItem('labAssistentSvar');
+            });
+        });
+    </script>
+</body>
+</html>
