@@ -5,7 +5,12 @@ const stegView = document.getElementById('steg-view');
 const rapportView = document.getElementById('rapport-view');
 
 function showView(viewToShow) {
+    // Stoppar eventuell pågåande tale og tilbakestiller knappetekstar
     window.speechSynthesis.cancel();
+    document.getElementById('les-opp-oversikt-btn').innerHTML = 'Les opp oversikt <i class="fa-solid fa-volume-high"></i>';
+    document.getElementById('les-opp-btn').innerHTML = 'Les opp oversikt <i class="fa-solid fa-volume-high"></i>';
+    document.getElementById('les-opp-rapport-btn').innerHTML = 'Les opp rapport <i class="fa-solid fa-volume-high"></i>';
+
     const views = [loadingView, homeView, oversiktView, stegView, rapportView];
     views.forEach(view => view.classList.add('hidden'));
     viewToShow.classList.remove('hidden');
@@ -249,42 +254,74 @@ function initializeApp() {
     });
 
     lesOppBtn.addEventListener('click', () => {
-        const tittel = document.getElementById('step-tittel').textContent;
-        const text = document.getElementById('step-text').textContent;
-        const question = document.getElementById('step-question').textContent;
-        
-        const textToRead = `${tittel}. ${text}. Spørsmål: ${question}`;
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            document.getElementById('les-opp-btn').innerHTML = 'Les opp oversikt <i class="fa-solid fa-volume-high"></i>';
+            return;
+        } else{
+            const tittel = document.getElementById('step-tittel').textContent;
+            const text = document.getElementById('step-text').textContent;
+            const question = document.getElementById('step-question').textContent;
+            
+            const textToRead = `${tittel}. ${text}. Spørsmål: ${question}`;
 
-        window.speechSynthesis.cancel(); 
-        
-        const utterance = new SpeechSynthesisUtterance(textToRead);
-        utterance.lang = 'nb-NO';
-        window.speechSynthesis.speak(utterance);
+            window.speechSynthesis.cancel(); 
+            
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'nb-NO';
+
+            document.getElementById('les-opp-btn').innerHTML = 'Stopp lesing <i class="fa-solid fa-stop"></i>';
+            utterance.onend = () => {
+                document.getElementById('les-opp-btn').innerHTML = 'Les opp oversikt <i class="fa-solid fa-volume-high"></i>';
+            };
+            window.speechSynthesis.speak(utterance);
+        }
     });
 
     lesOppOversiktBtn.addEventListener('click', () => {
-        const tittel = aktueltEksperiment.tittel;
-        const text = aktueltEksperiment.skildring;
-        const utstyr = aktueltEksperiment.utstyr.join(', ');
-        const maal = aktueltEksperiment.maal.join(', ');
-        
-        const textToRead = `${tittel}. ${text}. Utstyr: ${utstyr}. Mål: ${maal}.`;
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            document.getElementById('les-opp-oversikt-btn').innerHTML = 'Les opp oversikt <i class="fa-solid fa-volume-high"></i>';
+            return;
+        } else{
+            const tittel = aktueltEksperiment.tittel;
+            const text = aktueltEksperiment.skildring;
+            const utstyr = aktueltEksperiment.utstyr.join(', ');
+            const maal = aktueltEksperiment.maal.join(', ');
+            
+            const textToRead = `${tittel}. ${text}. Utstyr: ${utstyr}. Mål: ${maal}.`;
 
-        window.speechSynthesis.cancel(); 
-        
-        const utterance = new SpeechSynthesisUtterance(textToRead);
-        utterance.lang = 'nb-NO';
-        window.speechSynthesis.speak(utterance);
+            window.speechSynthesis.cancel(); 
+            
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'nb-NO';
+
+            document.getElementById('les-opp-oversikt-btn').innerHTML = 'Stopp lesing <i class="fa-solid fa-stop"></i>';
+            utterance.onend = () => {
+                document.getElementById('les-opp-oversikt-btn').innerHTML = 'Les opp oversikt <i class="fa-solid fa-volume-high"></i>';
+            };
+            window.speechSynthesis.speak(utterance);
+        }
     });
     
     lesRapportBtn.addEventListener('click', () => {
-        const reportContent = rapportText.textContent;
-        
-        window.speechSynthesis.cancel(); 
-        
-        const utterance = new SpeechSynthesisUtterance(reportContent);
-        utterance.lang = 'nb-NO';
-        window.speechSynthesis.speak(utterance);
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            document.getElementById('les-opp-rapport-btn').innerHTML = 'Les opp rapport <i class="fa-solid fa-volume-high"></i>';
+            return;
+        } else{
+            const reportContent = rapportText.textContent;
+            
+            window.speechSynthesis.cancel(); 
+            
+            const utterance = new SpeechSynthesisUtterance(reportContent);
+            utterance.lang = 'nb-NO';
+            document.getElementById('les-opp-rapport-btn').innerHTML = 'Stopp lesing <i class="fa-solid fa-stop"></i>';
+            utterance.onend = () => {
+                document.getElementById('les-opp-rapport-btn').innerHTML = 'Les opp rapport <i class="fa-solid fa-volume-high"></i>';
+            };
+            window.speechSynthesis.speak(utterance);
+        }
     });
 
     rapportTilStegBtn.addEventListener('click', () => {
