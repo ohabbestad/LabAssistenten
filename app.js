@@ -333,9 +333,9 @@ function initializeApp() {
     });
     
 
-    window.addEventListener('beforeunload', () => {
+    /*window.addEventListener('beforeunload', () => {
         localStorage.removeItem('labAssistentSvar');
-    });
+    }); */
     loadHeimView();
     showView(homeView);
 };
