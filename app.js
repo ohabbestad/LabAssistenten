@@ -250,6 +250,9 @@ function initializeApp() {
     });
 
     stegTilHeimBtn.addEventListener('click', () => {
+        aktueltEksperiment.steg[aktueltStegIndex].svar = stegSvarInput.value;
+        saveAnswersToLocalStorage(); 
+        
         showView(homeView);
     });
 
